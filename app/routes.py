@@ -8,9 +8,14 @@ from datetime import datetime
 @app.route('/')
 @app.route('/index')
 def index():
-    nome = "Gabriel"
     hora_atual = datetime.now().hour
     saudacao =''
+    dados = {
+        'nome': 'gabriel',
+        'profissao': 'programador',
+        'idade': '21'
+        }
+    jogos_favoritos = ['The Legend Of Zelda: Ocarina of Time','Xcom', 'Metal Gear Solid V: The Phantom Pain']
     if hora_atual<6:
         saudacao= 'Boa Madrugada'
     elif hora_atual<12:
@@ -21,5 +26,16 @@ def index():
         saudacao = 'Boa noite'
 
 
-    return render_template("index.html",nome=nome,saudacao =saudacao)
+    return render_template("index.html",dados=dados,saudacao =saudacao,jogos =jogos_favoritos)
     
+
+@app.route('/contato')
+def contato():
+    dados = {
+        'nome': 'gabriel',
+        'profissao': 'programador',
+        'idade': '21'
+    }
+    jogos_favoritos = ['The Legend Of Zelda: Ocarina of Time','Xcom', 'Metal Gear Solid V: The Phantom Pain']
+
+    return render_template('contato.html',dados=dados,jogos=jogos_favoritos)
